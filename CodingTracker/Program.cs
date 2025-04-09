@@ -18,16 +18,16 @@ public static class Program
         switch (menuSelection)
         {
             case MenuOption.View:
-                ViewSessions();
+                //ViewSessions();
                 break;
             case MenuOption.Add:
-                AddSession();
+                //AddSession();
                 break;
             case MenuOption.Delete:
-                DeleteSession();
+                //DeleteSession();
                 break;
             case MenuOption.Update:
-                UpdateSession();
+                //UpdateSession();
                 break;
         }
     }
