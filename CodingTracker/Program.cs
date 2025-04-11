@@ -75,7 +75,7 @@ public static class Program
     {
 
         Console.Clear();
-        CodingSession session = Helpers.AskForSession();
+        CodingSession session = UI.AskForSession();
 
         var command = $"INSERT INTO coding_sessions (Start_Time, End_Time, Duration) VALUES ('{session.startTime}', '{session.endTime}', '{session.duration}')";
 

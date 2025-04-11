@@ -9,7 +9,7 @@ using Spectre.Console;
 
 namespace CodingTracker
 {
-    internal static class Helpers
+    internal static class UI
     {
         public static CodingSession AskForSession()
         {

@@ -25,7 +25,5 @@ namespace CodingTracker.Models
         {
             duration = endTime - startTime;
         }
-
-
     }
 }
