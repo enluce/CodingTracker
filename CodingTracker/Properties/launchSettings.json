@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CodingTracker": {
+      "commandName": "Project",
+      "workingDirectory": "C:\\Users\\Laksh\\Documents\\Code\\CSharp\\CodingTracker\\CodingTracker"
+    }
+  }
+}

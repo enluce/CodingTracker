@@ -13,7 +13,8 @@ namespace CodingTracker
             View,
             Add,
             Update,
-            Delete
+            Delete,
+            Exit
         }
     }
 }
