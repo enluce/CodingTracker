@@ -4,20 +4,25 @@
     {
 
         public int Id { get; set; }
-        public DateTime startTime { get; set; }
-        public DateTime endTime { get; set; }
-        public TimeSpan duration { get; set; }
+        public string Date { get; set; }
+        public string StartTime { get; set; }
+        public string EndTime { get; set; }
+        public string Duration { get; set; }
 
-        public CodingSession(DateTime startingTime, DateTime endingTime)
+        public CodingSession() { } //required for dapper
+        public CodingSession(string startingTime, string endingTime)
         {
-            startTime = startingTime;
-            endTime = endingTime;
-            CalculateDuration();
+            StartTime = DateTime.Parse(startingTime).ToString("T");
+            EndTime = DateTime.Parse(endingTime).ToString("T");
+            Date = DateTime.Parse(endingTime).ToString("D");
+            CalculateDuration(DateTime.Parse(startingTime), DateTime.Parse(endingTime));
         }
 
-        private void CalculateDuration()
+        private void CalculateDuration(DateTime startingTime, DateTime endingTime)
         {
-            duration = endTime - startTime;
+            TimeSpan durationDT = endingTime - startingTime;
+
+            Duration = durationDT.ToString();
         }
     }
 }

@@ -8,12 +8,12 @@ namespace CodingTracker
     {
         public static CodingSession AskForSession()
         {
-            string userStartTime;
-            string userEndTime;
-            DateTime startTime = DateTime.Now;
-            DateTime endTime = DateTime.Now;
+            string userStartTime = "";
+            string userEndTime = "";
             bool isStartTimeValid = false;
             bool isEndTimeValid = false;
+            DateTime startTime = DateTime.Now;
+            DateTime endTime = DateTime.Now;
 
             while (!isStartTimeValid)
             {
@@ -24,11 +24,11 @@ namespace CodingTracker
             while (!isEndTimeValid)
             {
                 userEndTime = AnsiConsole.Ask<string>("Enter the end time of the session: (HH:mm)");
-                isEndTimeValid = DateTime.TryParseExact(userEndTime, "HH:mm", new CultureInfo("en-US"), DateTimeStyles.None, out endTime) && (endTime > startTime);
+                isEndTimeValid = DateTime.TryParseExact(userEndTime, "HH:mm", new CultureInfo("en-US"), DateTimeStyles.None, out endTime) && (DateTime.Parse(userEndTime) > DateTime.Parse(userStartTime));
                 if (!isEndTimeValid) AnsiConsole.Markup("[red]Invalid![/]\n");
             }
 
-            return new CodingSession(startTime, endTime);
+            return new CodingSession(startTime.ToString(), userEndTime.ToString());
 
         }
 

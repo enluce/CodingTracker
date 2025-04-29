@@ -42,7 +42,7 @@ public static class Program
             catch (Exception e)
             {
                 Console.Clear();
-                AnsiConsole.WriteLine($"Error encountered: {e.Message}");
+                AnsiConsole.WriteLine($"Error encountered: {e}");
             }
 
         }
