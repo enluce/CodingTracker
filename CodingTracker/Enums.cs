@@ -16,6 +16,11 @@ namespace CodingTracker
             Delete,
             Exit
         }
+        internal enum TimeType
+        {
+            Start,
+            End
+        }
 
     }
 }

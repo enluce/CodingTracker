@@ -24,13 +24,23 @@ namespace CodingTracker
             while (!isEndTimeValid)
             {
                 userEndTime = AnsiConsole.Ask<string>("Enter the end time of the session: (HH:mm)");
-                isEndTimeValid = DateTime.TryParseExact(userEndTime, "HH:mm", new CultureInfo("en-US"), DateTimeStyles.None, out endTime) && (DateTime.Parse(userEndTime) > DateTime.Parse(userStartTime));
+                isEndTimeValid = DateTime.TryParseExact(userEndTime, "HH:mm", new CultureInfo("en-US"), DateTimeStyles.None, out endTime)
+                    && (DateTime.Parse(userEndTime) > DateTime.Parse(userStartTime));
                 if (!isEndTimeValid) AnsiConsole.Markup("[red]Invalid![/]\n");
             }
 
             return new CodingSession(startTime.ToString(), userEndTime.ToString());
 
         }
+        public static int AskForId()
+        {
+
+            int id = AnsiConsole.Ask<int>("Enter the ID of the session you want to update: ");
+
+            return id;
+
+        }
 
     }
+
 }

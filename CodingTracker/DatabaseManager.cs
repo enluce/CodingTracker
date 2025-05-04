@@ -35,11 +35,18 @@ namespace CodingTracker
                 //Console.WriteLine(results.Start_Time);
             }
         }
-        internal static int NonQuery(string command)
+        internal static int NonQuery(string command, object parameters = null)
         {
             using (var connection = new SqliteConnection(connectionString))
             {
-                return connection.Execute(command);
+                return connection.Execute(command, parameters);
+            }
+        }
+        internal static string Scalar(string command)
+        {
+            using (var connection = new SqliteConnection(connectionString))
+            {
+                return connection.ExecuteScalar<string>(command);
             }
         }
     }

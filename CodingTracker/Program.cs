@@ -22,16 +22,19 @@ public static class Program
                 switch (menuSelection)
                 {
                     case MenuOption.View:
+                        Console.Clear();
                         SessionController.ViewSessions();
                         break;
                     case MenuOption.Add:
                         SessionController.AddSession();
+                      
                         break;
                     case MenuOption.Delete:
                         //DeleteSession();
                         break;
                     case MenuOption.Update:
                         //UpdateSession();
+                        SessionController.UpdateSession();
                         break;
                     case MenuOption.Exit:
                         exitApp = true;
