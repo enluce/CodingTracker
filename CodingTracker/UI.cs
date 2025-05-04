@@ -39,10 +39,7 @@ namespace CodingTracker
             {
                 id = AnsiConsole.Ask<int>("Enter the ID of the session you want to update: ");
 
-                string command = "SELECT COUNT(*) from coding_sessions where ID = @ID";
-
-                string rowsUpdated = DatabaseManager.Scalar(command, new { ID = id });
-                if (int.Parse(rowsUpdated) == 0)
+                if (Validation.IDValidation(id))
                 {
                     AnsiConsole.Markup("[red]Invalid ID![/]");
                     Console.ReadLine();

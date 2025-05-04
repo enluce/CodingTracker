@@ -1,4 +1,5 @@
-﻿using static CodingTracker.Enums;
+﻿using Spectre.Console;
+using static CodingTracker.Enums;
 
 namespace CodingTracker
 {
@@ -36,6 +37,17 @@ namespace CodingTracker
             return true;
         }
 
+        public static bool IDValidation(int id)
+        {
+            string command = "SELECT COUNT(*) from coding_sessions where ID = @ID";
+
+            string rowsUpdated = DatabaseManager.Scalar(command, new { ID = id });
+            if (int.Parse(rowsUpdated) == 0)
+            {
+                return false;
+            }
+            return true;
+        }
 
         private static void UpdateDuration(DateTime startTime, DateTime endTime, int recordID)
         {
