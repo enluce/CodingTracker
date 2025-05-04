@@ -46,6 +46,17 @@ namespace CodingTracker
 
 
         }
+        internal static void DeleteSession()
+        {
+            Console.Clear();
+            ViewSessions();
+
+            int sessionID = UI.AskForId();
+
+            
+
+
+        }
 
         internal static void UpdateSession()
         {
@@ -130,6 +141,7 @@ namespace CodingTracker
             }
 
             DatabaseManager.NonQuery(command);
+         
             AnsiConsole.Write("Session updated sucessfully!");
             Console.ReadLine();
         }

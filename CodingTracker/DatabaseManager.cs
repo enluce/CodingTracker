@@ -42,11 +42,11 @@ namespace CodingTracker
                 return connection.Execute(command, parameters);
             }
         }
-        internal static string Scalar(string command)
+        internal static string Scalar(string command, object parameters = null)
         {
             using (var connection = new SqliteConnection(connectionString))
             {
-                return connection.ExecuteScalar<string>(command);
+                return connection.ExecuteScalar<string>(command, parameters);
             }
         }
     }
