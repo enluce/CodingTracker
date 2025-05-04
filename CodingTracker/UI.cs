@@ -37,9 +37,9 @@ namespace CodingTracker
             int id = -1;
             while (true)
             {
-                id = AnsiConsole.Ask<int>("Enter the ID of the session you want to update: ");
+                id = AnsiConsole.Ask<int>("Enter the ID of the session: ");
 
-                if (Validation.IDValidation(id))
+                if (!Validation.IDValidation(id))
                 {
                     AnsiConsole.Markup("[red]Invalid ID![/]");
                     Console.ReadLine();

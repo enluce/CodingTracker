@@ -53,8 +53,12 @@ namespace CodingTracker
 
             int sessionID = UI.AskForId();
 
-            
+            string command = "DELETE from coding_sessions where ID = @ID";
 
+            DatabaseManager.NonQuery(command, new { ID = sessionID });
+
+            AnsiConsole.Markup("[green]Session deleted successfully![/]");
+            Console.ReadLine();
 
         }
 

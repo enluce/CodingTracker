@@ -27,13 +27,11 @@ public static class Program
                         break;
                     case MenuOption.Add:
                         SessionController.AddSession();
-                      
                         break;
                     case MenuOption.Delete:
-                        //DeleteSession();
+                        SessionController.DeleteSession();
                         break;
                     case MenuOption.Update:
-                        //UpdateSession();
                         SessionController.UpdateSession();
                         break;
                     case MenuOption.Exit:
