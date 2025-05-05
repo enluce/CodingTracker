@@ -8,6 +8,7 @@ namespace CodingTracker
     {
         public static CodingSession AskForSession()
         {
+            Console.Clear();
             string userStartTime = "";
             string userEndTime = "";
             bool isStartTimeValid = false;
@@ -31,6 +32,40 @@ namespace CodingTracker
 
             return new CodingSession(startTime.ToString(), userEndTime.ToString());
 
+        }
+
+        public static void TableVisualizer(List<CodingSession> sessions)
+        {
+            Console.Clear();
+            Table table = new Table();
+
+            table.AddColumn("ID");
+            table.AddColumn("Date");
+            table.AddColumn("Start_Time");
+            table.AddColumn("End_Time");
+            table.AddColumn("Duration");
+            //table.AddColumn(new TableColumn("Bar").Centered());
+
+            foreach (CodingSession session in sessions)
+            {
+                table.AddRow(session.Id.ToString(), session.Date, session.StartTime, session.EndTime, session.Duration);
+            }
+
+            AnsiConsole.Write(table);
+        }
+
+        public static void Message(string message, Enums.MessageOutcome messageOutcome)
+        {
+            Dictionary<Enums.MessageOutcome, string> dict = new()
+            {
+                {Enums.MessageOutcome.Positive, "green" },
+                {Enums.MessageOutcome.Negative, "red" }
+            };
+
+            AnsiConsole.Markup($"[{dict[messageOutcome]}]{message}[/]");
+
+            Console.ReadLine();
+            Console.Clear();
         }
         public static int AskForId()
         {

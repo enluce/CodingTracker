@@ -9,46 +9,31 @@ namespace CodingTracker
 
         internal static void ViewSessions()
         {
-            
+     
             List<CodingSession> sessions = DatabaseManager.Query("SELECT * FROM coding_sessions;");
 
-            Table table = new Table();
-
-            table.AddColumn("ID");
-            table.AddColumn("Date");
-            table.AddColumn("Start_Time");
-            table.AddColumn("End_Time");
-            table.AddColumn("Duration");
-            //table.AddColumn(new TableColumn("Bar").Centered());
-
-            foreach (CodingSession session in sessions)
-            {
-                table.AddRow(session.Id.ToString(), session.Date, session.StartTime, session.EndTime, session.Duration);
-            }
-
-            AnsiConsole.Write(table);
-
+            UI.TableVisualizer(sessions);
 
         }
         internal static void AddSession()
         {
-            Console.Clear();
 
             CodingSession session = UI.AskForSession();
 
             var command = $"INSERT INTO coding_sessions (date, startTime, endTime, duration) VALUES ('{session.Date}', '{session.StartTime}', '{session.EndTime}', '{session.Duration}')";
             DatabaseManager.NonQuery(command);
-            AnsiConsole.Markup("Session added successfully!");
 
-            Console.ReadLine();
-            Console.Clear();
-
+            UI.Message("Session added successfully!", Enums.MessageOutcome.Positive);
 
 
         }
         internal static void DeleteSession()
         {
-            Console.Clear();
+            if (DatabaseManager.ContainsRow())
+            {
+                UI.Message("No sessions available!", Enums.MessageOutcome.Negative);
+                return;
+            }
             ViewSessions();
 
             int sessionID = UI.AskForId();
@@ -57,14 +42,18 @@ namespace CodingTracker
 
             DatabaseManager.NonQuery(command, new { ID = sessionID });
 
-            AnsiConsole.Markup("[green]Session deleted successfully![/]");
-            Console.ReadLine();
+            UI.Message("Session deleted successfully!", Enums.MessageOutcome.Positive);
 
         }
 
         internal static void UpdateSession()
         {
-            Console.Clear();
+            if (DatabaseManager.ContainsRow())
+            {
+                UI.Message("No sessions available!", Enums.MessageOutcome.Negative);
+                return;
+            }
+
             ViewSessions();
 
             DateOnly dateDateOnly = DateOnly.MaxValue;

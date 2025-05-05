@@ -49,5 +49,15 @@ namespace CodingTracker
                 return connection.ExecuteScalar<string>(command, parameters);
             }
         }
+
+        internal static bool ContainsRow()
+        {
+            using (var connection = new SqliteConnection(connectionString))
+            {
+                int rows = connection.ExecuteScalar<int>("SELECT COUNT(*) FROM coding_sessions");
+
+                return (rows == 0) ? true : false; 
+            }
+        }
     }
 }
